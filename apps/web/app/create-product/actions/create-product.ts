@@ -10,6 +10,6 @@ export default async function createProduct(data: FormData) {
             'Content-Type': 'application/json'
         }
     });
-    revalidateTag('products');//invalidated any cached data with the 'products' tag
+    revalidateTag('products');
 
 } 
