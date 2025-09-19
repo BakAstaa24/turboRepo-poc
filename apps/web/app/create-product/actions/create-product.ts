@@ -1,5 +1,7 @@
 "use server"
 
+import { revalidateTag } from "next/cache";
+
 export default async function createProduct(data: FormData) {
     await fetch(`${process.env.API_URL}/products`, {
         method: 'POST',
@@ -8,5 +10,6 @@ export default async function createProduct(data: FormData) {
             'Content-Type': 'application/json'
         }
     });
+    revalidateTag('products');//invalidated any cached data with the 'products' tag
 
-}
+} 
